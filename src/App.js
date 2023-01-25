@@ -1,35 +1,24 @@
 import "./App.css";
 import React from "react";
-import {
-     createBrowserRouter,
-     createRoutesFromElements,
-     Route,
-} from "react-router-dom";
-import Navbar from "./Components/Navbar";
+import { Routes, Route } from "react-router-dom";
+
 import Home from "./Components/Home";
 import About from "./Components/About";
+ import Navbar from "./Components/Navbar";
 function App() {
-     const router = createBrowserRouter(
-     createRoutesFromElements(
-          <Route
-               exact
-               path="/"
-               element={<Navbar />}
-          >
-               ,
-               <Route
-                    index
-                    element={Home}
-               />
-               <Route
-                    index
-                    element={About}
-               />
-          </Route>,
-     ));
      return (
           <>
-               <Navbar />
+               <Navbar/>
+               <Routes>
+                    <Route
+                         path="/"
+                         element={<Home />}
+                    />
+                    <Route
+                         path="/about"
+                         element={<About />}
+                    />
+               </Routes>
           </>
      );
 }

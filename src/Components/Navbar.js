@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 export default function Navbar() {
      return (
           <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -28,7 +28,7 @@ export default function Navbar() {
                          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                               <li className="nav-item">
                                    <Link
-                                        className="nav-link active"
+                                        className="nav-link"
                                         aria-current="page"
                                         to="/"
                                    >

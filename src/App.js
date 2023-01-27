@@ -1,14 +1,14 @@
 import "./App.css";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-
 import Home from "./Components/Home";
 import About from "./Components/About";
- import Navbar from "./Components/Navbar";
+import Navbar from "./Components/Navbar";
+import NoteState from "./context/note/NoteState";
 function App() {
      return (
           <>
-               <Navbar/>
+               <Navbar />
                <Routes>
                     <Route
                          path="/"

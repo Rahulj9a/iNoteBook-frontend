@@ -1,17 +1,18 @@
-import React, { useContext } from "react";
-import NoteContext from "../context/note/noteContext";
+import React from "react";
+
+import Notes from "./Notes";
 
 export default function Home() {
+    
      return (
           <>
-         <section className="container my-3">
-           
+               <section className="container my-3">
                     <h2>Add Note</h2>
-                
+
                     <form>
                          <div className="mb-3">
                               <label
-                                   for="exampleInputEmail1"
+                                   htmlFor="exampleInputEmail1"
                                    className="form-label"
                               >
                                    Email address
@@ -32,7 +33,7 @@ export default function Home() {
                          </div>
                          <div className="mb-3">
                               <label
-                                   for="exampleInputPassword1"
+                                   htmlFor="exampleInputPassword1"
                                    className="form-label"
                               >
                                    Password
@@ -51,7 +52,7 @@ export default function Home() {
                               />
                               <label
                                    className="form-check-label"
-                                   for="exampleCheck1"
+                                   htmlFor="exampleCheck1"
                               >
                                    Check me out
                               </label>
@@ -64,9 +65,7 @@ export default function Home() {
                          </button>
                     </form>
                </section>
-               <section className="container my-3">
-                    <h2>Your notes</h2>
-               </section>
+               <Notes />
           </>
      );
 }

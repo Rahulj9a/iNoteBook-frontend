@@ -5,18 +5,17 @@ export default function NoteItem(props) {
      return (
           <div>
                <div
-                    class="card"
+                    className="card"
                     style={{ width: "18rem" }}
                >
-                    <div class="card-body">
-                         <h5 class="card-title">{title}</h5>
-                         <p class="card-text">{description}</p>
-                         <a
-                              href="#"
-                              class="btn btn-primary"
-                         >
-                              Go somewhere
-                         </a>
+                    <div className="card-body">
+                         <div className="d-flex align-items-center">
+                              <h5 className="card-title">{title}</h5>
+                              <i className="fa-solid fa-pen-to-square mx-2"></i>
+                              <i className="fa-solid fa-trash mx-2"></i>
+                         </div>
+
+                         <p className="card-text">{description}</p>
                     </div>
                </div>
           </div>

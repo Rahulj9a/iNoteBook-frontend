@@ -30,8 +30,9 @@ export default function AddNote() {
                                    type="text"
                                    className="form-control"
                                    id="title"
+                                   name="title"
+                                   onChange={onChange}
                               />
-                               
                          </div>
                          <div className="mb-3">
                               <label
@@ -43,8 +44,8 @@ export default function AddNote() {
                               <input
                                    type="text"
                                    className="form-control"
-                             id="description"
-                             name="description"
+                                   id="description"
+                                   name="description"
                                    onChange={onChange}
                               />
                          </div>
@@ -66,7 +67,7 @@ export default function AddNote() {
                               className="btn btn-primary"
                               onClick={handleAddNote}
                          >
-                              Submit
+                              Add note
                          </button>
                     </form>
                </section>

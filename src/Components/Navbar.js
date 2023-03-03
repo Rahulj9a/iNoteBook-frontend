@@ -41,7 +41,9 @@ export default function Navbar() {
                               <li className="nav-item">
                                    <Link
                                         className={`nav-link ${
-                                             location == "/about" ? "active" : ""
+                                             location == "/about"
+                                                  ? "active"
+                                                  : ""
                                         }`}
                                         to="/about"
                                    >
@@ -51,20 +53,22 @@ export default function Navbar() {
                          </ul>
                          <form
                               className="d-flex"
-                              role="search"
+                              role="usersign"
                          >
-                              <input
-                                   className="form-control me-2"
-                                   type="search"
-                                   placeholder="Search"
-                                   aria-label="Search"
-                              />
-                              <button
-                                   className="btn btn-outline-success"
-                                   type="submit"
+                              <Link
+                                   className="btn btn-primary mx-2"
+                                   role='button'
+                                   to='/signin'
                               >
-                                   Search
-                              </button>
+                                   Signin
+                              </Link>
+                              <Link
+                                   className="btn btn-primary mx-2"
+                                   role="button"
+                                   to="/signup"
+                              >
+                                   Signup
+                              </Link>
                          </form>
                     </div>
                </div>

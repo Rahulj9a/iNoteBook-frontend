@@ -63,6 +63,7 @@ const NoteState = (props) => {
                },
           });
           const json = await response.json();
+          console.log(json)
           //Servre side:
           const newNotes = notes.filter((note) => {
                return note._id !== id;
@@ -88,6 +89,7 @@ const NoteState = (props) => {
                     },
                );
                const json = response.json();
+               console.log(json)
                let newNotes = JSON.parse(JSON.stringify(notes));
                //Logic to edit on clientside
                for (let index = 0; index < newNotes.length; index++) {

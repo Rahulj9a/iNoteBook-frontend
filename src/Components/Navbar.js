@@ -1,7 +1,13 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 export default function Navbar() {
      let location = useLocation().pathname
+     let navigate = useNavigate()
+     const handleLogout = (e) => {
+          e.preventDefault()
+          localStorage.removeItem('token')
+          navigate("/signin")
+     }
      return (
           <nav className="navbar navbar-expand-lg bg-body-tertiary">
                <div className="container-fluid">
@@ -30,7 +36,7 @@ export default function Navbar() {
                               <li className="nav-item">
                                    <Link
                                         className={`nav-link ${
-                                             location == "/" ? "active" : ""
+                                             location === "/" ? "active" : ""
                                         }`}
                                         aria-current="page"
                                         to="/"
@@ -41,7 +47,7 @@ export default function Navbar() {
                               <li className="nav-item">
                                    <Link
                                         className={`nav-link ${
-                                             location == "/about"
+                                             location === "/about"
                                                   ? "active"
                                                   : ""
                                         }`}
@@ -51,25 +57,27 @@ export default function Navbar() {
                                    </Link>
                               </li>
                          </ul>
-                         <form
-                              className="d-flex"
-                              role="usersign"
-                         >
-                              <Link
-                                   className="btn btn-primary mx-2"
-                                   role='button'
-                                   to='/signin'
+                         {!localStorage.getItem('token') ?
+                              <form
+                                   className="d-flex"
+                                   role="usersign"
                               >
-                                   Signin
-                              </Link>
-                              <Link
-                                   className="btn btn-primary mx-2"
-                                   role="button"
-                                   to="/signup"
-                              >
-                                   Signup
-                              </Link>
-                         </form>
+                               
+                                   <Link
+                                        className="btn btn-primary mx-2"
+                                        role='button'
+                                        to='/signin'
+                                   >
+                                        Signin
+                                   </Link>
+                                   <Link
+                                        className="btn btn-primary mx-2"
+                                        role="button"
+                                        to="/signup"
+                                   >
+                                        Signup
+                                   </Link>
+                              </form>:<button className="btn btn-primary" onClick={handleLogout}>Logout</button>}
                     </div>
                </div>
           </nav>

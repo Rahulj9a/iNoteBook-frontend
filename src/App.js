@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, {useState} from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Components/Home";
 import About from "./Components/About";
@@ -7,12 +7,20 @@ import Navbar from "./Components/Navbar";
 import Alert from "./Components/Alert";
 import SignIn from "./Components/SignIn";
 import SignUp from "./Components/SignUp";
- 
+
 function App() {
+     const [alert, setalert] = useState(null);
+     const showAlert = (message, type) => {
+          setalert({
+               msg: message,
+               type: type,
+          });
+          setTimeout(() => setalert(null), 3000);
+     };
      return (
           <>
                <Navbar />
-               <Alert alert="React course" />
+               <Alert alert={alert} />
                <div className="container">
                     <Routes>
                          <Route
@@ -25,11 +33,11 @@ function App() {
                          />
                          <Route
                               path="/signin"
-                              element={<SignIn />}
+                              element={<SignIn showAlert={showAlert}/>}
                          />
                          <Route
                               path="/signup"
-                              element={<SignUp/>}
+                              element={<SignUp showAlert={showAlert} />}
                          />
                     </Routes>
                </div>

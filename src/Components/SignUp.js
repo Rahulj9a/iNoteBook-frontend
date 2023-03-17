@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Signup() {
+export default function Signup(props) {
      const [user, setUser] = useState({
           name: "",
           email: "",
@@ -30,17 +30,21 @@ export default function Signup() {
                const json = await response.json();
 
                console.log(json);
-               
+
                if (response.status === 200) {
                     //Save the auth token and redirect
-                    console.log(json.authtoken)
+                    console.log(json.authtoken);
                     localStorage.setItem("token", json.authtoken);
-                    navigate('/')
+                    props.showAlert("Successfully signed up", "success");
+                    navigate("/");
                } else {
-                    alert("Invalid Credentials");
+                    props.showAlert("Invalid Credentials", "danger");
                }
           } else {
-               alert("Password doesn't match with confirm password");
+               props.showAlert(
+                    "Password doesn't match with confirm password",
+                    "danger",
+               );
           }
           setUser({
                name: "",

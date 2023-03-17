@@ -116,6 +116,7 @@ const NoteState = (props) => {
                     addNote,
                     deleteNote,
                     editNote,
+                    
                }}
           >
                {props.children}

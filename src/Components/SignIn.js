@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {useNavigate} from "react-router-dom"
 
-export default function SignIn() {
+export default function SignIn(props) {
      const [user, setUser] = useState({ email: "", password: "" });
      let navigate = useNavigate();
      const handleLogin = async (e) => {
@@ -25,9 +25,10 @@ export default function SignIn() {
                //Save the auth token and redirect
                console.log(json)
                localStorage.setItem("token", json);
+               props.showAlert("Successfully signedin", 'success')
                navigate("/");
           } else {
-               alert('Invalid Credentials')
+               props.showAlert('Invalid Credentials', 'danger')
           }
           setUser({
                email: "",

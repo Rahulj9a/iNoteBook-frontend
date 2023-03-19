@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function Notes() {
      let navigate = useNavigate();
      const context = useContext(NoteContext);
-     const { notes, getNotes, editNote } = context;
+     const { notes, getNotes, editNote, alertMessage} = context;
      const [note, setNote] = useState({
           id: "",
           etitle: "",
@@ -43,6 +43,7 @@ export default function Notes() {
           editNote(note.id, note.etitle, note.edescription, note.etag);
           refClose.current.click();
      };
+      
 
      return (
           <>

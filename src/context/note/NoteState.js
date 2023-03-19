@@ -4,9 +4,12 @@ import React, { useState } from "react";
 const NoteState = (props) => {
      const host = "http://localhost:5000";
      let notesInitial = [];
-
+     let [alertMessage, setAlertMessage] = useState(null);
      const [notes, setNotes] = useState(notesInitial);
-
+     const showAlertMessage = (message, type) => {
+          setAlertMessage(message, type);
+          setTimeout(() => setAlertMessage(null), 3000);
+     };
      //Add a note:-
      const addNote = async ({ title, description, tag }) => {
           //API CALL:
@@ -25,8 +28,12 @@ const NoteState = (props) => {
                let json = await response.json();
                if (response.status === 200) {
                     setNotes(notes.concat(json));
+                    showAlertMessage("Note is added successfully", "success");
+               } else {
+                    showAlertMessage("Some error occurred", "danger");
                }
           } catch (error) {
+               showAlertMessage("Some error occurred", "danger");
                console.log(error);
           }
      };
@@ -63,12 +70,13 @@ const NoteState = (props) => {
                },
           });
           const json = await response.json();
-          console.log(json)
+          console.log(json);
           //Servre side:
           const newNotes = notes.filter((note) => {
                return note._id !== id;
           });
           setNotes(newNotes);
+          showAlertMessage("Note is deleted successfully", "success");
      };
 
      //Edit a note:-
@@ -89,7 +97,7 @@ const NoteState = (props) => {
                     },
                );
                const json = response.json();
-               console.log(json)
+               console.log(json);
                let newNotes = JSON.parse(JSON.stringify(notes));
                //Logic to edit on clientside
                for (let index = 0; index < newNotes.length; index++) {
@@ -102,8 +110,10 @@ const NoteState = (props) => {
                     break;
                }
                setNotes(newNotes);
+               showAlertMessage("Note is edited successfully", "success");
           } catch (error) {
                console.log(error);
+               showAlertMessage("Some error occurred", "danger");
           }
      };
 
@@ -116,7 +126,7 @@ const NoteState = (props) => {
                     addNote,
                     deleteNote,
                     editNote,
-                    
+                    alertMessage,
                }}
           >
                {props.children}
